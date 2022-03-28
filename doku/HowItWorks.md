@@ -20,7 +20,7 @@ either:
 
 The app is structured in following way:
 
-![](B:\Dokumente\PycharmProjects\LocalStartPage_2\doku\structure.png)
+![](https://github.com/LoremIpsumDolo/LocalStartPage_2/blob/master/doku/structure.png)
 
 
 #### initialization:
