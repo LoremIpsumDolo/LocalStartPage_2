@@ -1,0 +1,76 @@
+.form_container {
+	margin          : auto;
+	padding-left    : 50px;
+	/*height : 100vh;*/
+	width           : 100%;
+	display         : flex;
+	flex-direction  : column;
+	gap             : 20px;
+	justify-content : flex-start;
+	flex-wrap       : wrap;
+}
+
+form {
+	max-width : 500px;
+}
+
+fieldset {
+	padding         : 10px;
+	display         : flex;
+	flex-direction  : column;
+	justify-content : space-between;
+	gap             : 10px;
+
+}
+
+label {
+	display         : flex;
+	justify-content : space-between;
+}
+
+.input {
+	display : none;
+}
+
+input[type=text] {
+	width : 45%;
+}
+
+.label_value,
+.label_key {
+	width : 45%;
+}
+
+.label_key {
+	font-weight : bold;
+}
+
+.buttonwrapper {
+	width           : 100%;
+	display         : flex;
+	justify-content : space-between;
+}
+
+.button {
+	background-color : var(--bg);
+	border           : solid 1px #04AA6D;
+	color            : #04AA6D;
+	text-decoration  : none;
+	cursor           : pointer;
+}
+
+.button_edit {
+	display : block;
+	width   : 100%;
+}
+
+.button_cancel,
+.button_save {
+	display : none;
+	width   : 45%;
+}
+
+.button:hover {
+	border : solid 1px #09ca84;
+	color  : #09ca84;
+}

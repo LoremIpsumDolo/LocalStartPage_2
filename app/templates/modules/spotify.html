@@ -1,0 +1,18 @@
+{% if data.is_playing == True %}
+
+	<div id="cover">
+		<img src="{{ data.images }}" alt="">
+	</div>
+
+	<div id="track_details">
+		<div id="artist" class="fs_1">{{ data.artist }}</div>
+		<div id="track_name" class="fs__9">{{ data.track }}</div>
+	</div>
+
+{% endif %}
+
+<span style="display: none"
+      hx-get="/spotify"
+      hx-trigger="load delay:2s"
+      hx-sync="queue all"
+      hx-target="#spotify_container"></span>

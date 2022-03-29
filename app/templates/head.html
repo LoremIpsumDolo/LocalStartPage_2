@@ -1,0 +1,23 @@
+<head>
+
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Dashboard</title>
+
+	<link rel="shortcut icon" href="{{ url_for('static', filename='/favicon.ico') }}">
+	{# CSS  #}
+	<link rel="stylesheet" href="{{ url_for('static', filename='/css/reset.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='/css/main.css') }}">
+	{#	JS  #}
+	<script src="http://192.168.1.12/cdn/jquery.js"></script>
+	<script src="http://192.168.1.12/cdn/htmx.js"></script>
+
+	{% block head %}{% endblock head %}
+
+</head>
+
+
+
+

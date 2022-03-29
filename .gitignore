@@ -1,2 +1,5 @@
 # Project exclude paths
 /app/.spotify_caches/
+config.ini
+/app/modules/module_configs.json
+/app/tests

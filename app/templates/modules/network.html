@@ -1,0 +1,62 @@
+{% set online_status = Data["NetworkModule"]["module_data"]["ONLINE_STATUS"] %}
+
+{% if online_status == "online" %}
+	{% set online_status_color = "green" %}
+{% else %}
+	{% set online_status_color = "red" %}
+{% endif %}
+
+{# # # # # # # # # # #}
+
+{% set cache_status = Data["NetworkModule"]["module_cache_status"] %}
+
+{% if cache_status == "valid" %}
+	{% set cache_status_color = "green" %}
+{% else %}
+	{% set cache_status_color = "red" %}
+{% endif %}
+
+{# # # # # # # # # # #}
+
+{% set cache_delta = Data["NetworkModule"]["cache_delta"] %}
+
+{# # # # # # # # # # #}
+
+<div class="fs_1_2">
+	<span>Status:</span>
+	<span id="online_status"
+	      class="{{ online_status_color }}">{{ online_status }}</span>
+</div>
+
+
+<div class="fs_1_2">
+	<span>Uptime:</span>
+	<span id="uptime">{{ Data["NetworkModule"]["module_data"]["UPTIME"] }}</span>
+</div>
+
+
+<div class="fs_1_2">
+	<span>Cache:</span>
+	<span id="footer_cache"
+	      class="{{ cache_status_color }}">{{ cache_status }} ({{ cache_delta }})</span>
+</div>
+
+{% if not cache_status == "valid" %}
+
+	<span style="display: none"
+	      hx-get="/update_module?module_name=NetworkModule"
+	      hx-trigger="load delay:2s"
+	      hx-sync="queue all"
+	      hx-target="#footer"
+	></span>
+
+{% else %}
+
+	<span style="display: none"
+	      hx-get="/module?module_name=NetworkModule"
+	      hx-trigger="load delay:{{ cache_delta }}s"
+	      hx-sync="queue all"
+	      hx-target="#footer"
+	></span>
+
+{% endif %}

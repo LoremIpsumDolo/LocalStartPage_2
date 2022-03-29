@@ -1,0 +1,143 @@
+:root {
+	--bg       : #24272a;
+	--bg-light : #3c4147;
+	--bg-med   : #2c3035;
+
+	--text     : #a2a0a0;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing : border-box;
+}
+
+.debug_1 {
+	outline : 1px red solid;
+}
+
+.debug_2 {
+	outline : 1px greenyellow solid;
+}
+
+.green {
+	color : green;
+}
+
+.red {
+	color : red;
+}
+
+
+.flex {
+	display         : flex;
+	align-items     : center;
+	justify-content : center;
+}
+
+.flex_row {
+	display         : flex;
+	flex-direction  : row;
+	align-items     : center;
+	justify-content : center;
+}
+
+.fs_1 {
+	font-size   : 1em;
+	font-weight : 500;
+}
+
+.fs_1_2 {
+	font-size : 1.2em;
+}
+
+.fs__9 {
+	font-size : .9em;
+}
+
+.fs_1_5 {
+	font-size : 1.5em;
+}
+
+.fs_2 {
+	font-size   : 2em;
+	font-weight : 500;
+}
+
+/* ******** */
+
+body {
+	margin      : 0;
+	padding     : 0;
+	background  : var(--bg);
+	color       : var(--text);
+	font-family : "Noto Sans", sans-serif;
+	display     : flex;
+}
+
+/* ******** */
+
+#topnav {
+	width           : 100%;
+	position        : fixed;
+	top             : 0;
+	background      : var(--bg-med);
+	padding         : 2px 50px;
+	display         : flex;
+	justify-content : space-between;
+	border-bottom   : var(--text) solid 1px;
+}
+
+#topnav {
+	overflow      : hidden;
+	text-overflow : ellipsis;
+	white-space   : nowrap;
+	cursor        : default;
+}
+
+.inner_topnav_container {
+	min-height : 70px;
+	min-width  : 100px;
+	max-width  : 250px;
+	padding    : 5px;
+}
+
+
+.inner_topnav_container_right,
+.inner_topnav_container_left {
+	gap : 1em;
+}
+
+#date > * {
+	padding : 3px;
+}
+
+#track_details > * {
+	padding : 3px;
+}
+
+#cover {
+	width      : 50px;
+	height     : 50px;
+	background : blue;
+}
+
+/* ***** */
+
+#footer {
+	position   : fixed;
+	left       : 0;
+	bottom     : 0;
+	width      : 100%;
+	text-align : center;
+	padding    : 8px;
+	gap        : 2em;
+}
+
+#footer > * {
+	padding : 3px;
+}
+
+#uptime {
+	font-size: .9em;
+}

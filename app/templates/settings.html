@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block head %}
+	<link rel="stylesheet" href="{{ url_for('static', filename='/css/settings.css') }}">
+	<script src="{{ url_for('static', filename='/js/settings.js') }}"></script>
+{% endblock head %}
+
+
+
+{% block body %}
+	<div class="form_container">
+		{% for key in Data.Config.keys() %}
+
+			<form action="">
+				<fieldset>
+					<legend>{{ key }}</legend>
+					{% for setting_key in Data.Config[key]["settings"] %}
+						<label>
+							<span class="label_key">{{ setting_key }}</span>
+							<span class="label_value">{{ Data.Config[key]["settings"][setting_key] }}</span>
+						</label>
+						<div class="input">
+							<input type="text" name="name" value="{{ Data.Config[key]["settings"][setting_key] }}"/>
+						</div>
+					{% endfor %}
+
+
+					<div class="buttonwrapper">
+						<input class="button button_edit" type="button" value="Edit">
+						<input class="button button_save" type="button" value="Save">
+						<input class="button button_cancel" type="button" value="Cancel">
+					</div>
+
+
+				</fieldset>
+			</form>
+
+		{% endfor %}
+	</div>
+
+	<script>
+
+	</script>
+
+
+{% endblock body %}
