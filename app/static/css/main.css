@@ -1,9 +1,10 @@
 :root {
-	--bg       : #24272a;
-	--bg-light : #3c4147;
-	--bg-med   : #2c3035;
+	--bg         : #24272a;
+	--bg-light   : #3c4147;
+	--bg-med     : #2c3035;
 
-	--text     : #a2a0a0;
+	--text       : #a2a0a0;
+	--text_hover : #c3c2c2;
 }
 
 *,
@@ -139,5 +140,5 @@ body {
 }
 
 #uptime {
-	font-size: .9em;
+	font-size : .9em;
 }

@@ -1,76 +1,107 @@
-.form_container {
-	margin          : auto;
-	padding-left    : 50px;
-	/*height : 100vh;*/
-	width           : 100%;
-	display         : flex;
-	flex-direction  : column;
-	gap             : 20px;
-	justify-content : flex-start;
-	flex-wrap       : wrap;
+.main_settings_wrapper {
+    width          : 90%;
+    height         : 100vh;
+    margin         : auto;
+    display        : flex;
+    align-items    : flex-start;
+    justify-content: flex-start;
+    padding        : 4em;
 }
 
-form {
-	max-width : 500px;
+hr {
+    border-top: 1px solid var(--text);
+    opacity   : .2;
 }
 
+legend {
+    font-weight: bold;
+}
 fieldset {
-	padding         : 10px;
-	display         : flex;
-	flex-direction  : column;
-	justify-content : space-between;
-	gap             : 10px;
-
+    margin: 10px 0;
+    border: solid 3px var(--bg-light);
 }
 
-label {
-	display         : flex;
-	justify-content : space-between;
+
+
+.setting_name_container,
+.setting_content_container {
+    padding: .5em;
 }
 
-.input {
-	display : none;
+.settings_content_key,
+.settings_content_value {
+    width  : 45%;
+    padding: 3px 4px;
 }
 
-input[type=text] {
-	width : 45%;
+.settings_container {
+    min-width: 650px;
+    border   : solid 1px var(--text);
 }
 
-.label_value,
-.label_key {
-	width : 45%;
+.settings_container>* {
+    cursor: default;
 }
 
-.label_key {
-	font-weight : bold;
+.settings_block {
+    padding: 4px;
 }
 
-.buttonwrapper {
-	width           : 100%;
-	display         : flex;
-	justify-content : space-between;
+.setting_content_container {
+    border-bottom: solid 1px var(--text);
 }
 
-.button {
-	background-color : var(--bg);
-	border           : solid 1px #04AA6D;
-	color            : #04AA6D;
-	text-decoration  : none;
-	cursor           : pointer;
+.setting_name_container {
+    background-color: var(--bg-med);
 }
 
-.button_edit {
-	display : block;
-	width   : 100%;
+.setting_name_container:hover {
+    color: var(--text_hover);
 }
 
-.button_cancel,
-.button_save {
-	display : none;
-	width   : 45%;
+.setting_content_container {
+    display: none;
 }
 
-.button:hover {
-	border : solid 1px #09ca84;
-	color  : #09ca84;
+.settings_content {
+    display        : flex;
+    justify-content: flex-start;
+    padding        : 4px 0;
+}
+
+.settings_content>*{
+   font-size: 0.9em;
+}
+
+/* INPUT */
+
+
+.setting_value_input {
+    display: none;
+}
+
+.setting_value_input {
+    background-color: var(--bg-light);
+    color           : var(--text_hover);
+    border          : none;
+    width           : 45%;
+    padding         : 3px 4px;
+}
+
+/* BUTTON */
+
+.btn_wrapper {
+    display        : flex;
+    justify-content: space-around;
+}
+
+.btn_wrapper>* {
+    margin-top      : 10px;
+    text-align      : center;
+    padding         : 4px 8px;
+    background-color: var(--bg-light);
+}
+
+.btn_wrapper>*:hover {
+    color: var(--text_hover);
 }

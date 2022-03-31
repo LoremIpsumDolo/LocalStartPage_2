@@ -69,6 +69,7 @@ def url_update_module_by_name():
 #   MODULES    #
 ###############
 
+
 @app.route('/spotify')
 def spotify():
 
@@ -94,6 +95,14 @@ def spotify_callback():
 #   SETTINGS    #
 ################
 
+
 @app.route('/settings')
 def url_settings():
 	return render_template('settings.html', Data=ModuleHandler)
+
+
+@app.route('/settings/edit', methods=['POST', 'GET'])
+def url_settings_edit():
+	pprint(request.args.get)
+	return "", 200
+	# return render_template('settings.html', Data=ModuleHandler)

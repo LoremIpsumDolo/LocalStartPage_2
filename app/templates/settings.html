@@ -1,46 +1,76 @@
 {% extends 'base.html' %}
 
 {% block head %}
+	<!--suppress HtmlFormInputWithoutLabel -->
 	<link rel="stylesheet" href="{{ url_for('static', filename='/css/settings.css') }}">
 	<script src="{{ url_for('static', filename='/js/settings.js') }}"></script>
 {% endblock head %}
 
 
-
 {% block body %}
-	<div class="form_container">
-		{% for key in Data.Config.keys() %}
 
-			<form action="">
-				<fieldset>
-					<legend>{{ key }}</legend>
-					{% for setting_key in Data.Config[key]["settings"] %}
-						<label>
-							<span class="label_key">{{ setting_key }}</span>
-							<span class="label_value">{{ Data.Config[key]["settings"][setting_key] }}</span>
-						</label>
-						<div class="input">
-							<input type="text" name="name" value="{{ Data.Config[key]["settings"][setting_key] }}"/>
-						</div>
-					{% endfor %}
+	<div class="main_settings_wrapper">
+		<div class="settings_container">
 
-
-					<div class="buttonwrapper">
-						<input class="button button_edit" type="button" value="Edit">
-						<input class="button button_save" type="button" value="Save">
-						<input class="button button_cancel" type="button" value="Cancel">
+			{% for key in Data.Config.keys() %}
+				<div class="settings_block ">
+					<div class="setting_name_container ">
+						<h4>{{ key }}</h4>
 					</div>
 
+					<!-- settings block - hidden -->
+					<div class="setting_content_container">
+						<!-- SETTINGS -->
+						<div class="setting_type_wrapper">
+							<fieldset>
 
-				</fieldset>
-			</form>
+								<legend>
+									settings
+								</legend>
 
-		{% endfor %}
+								{% for _key, _val in Data.Config[key]["settings"].items() %}
+									<div class="settings_content">
+										<div class="settings_content_key">{{ _key }}</div>
+										<div class="settings_content_value">{{ _val }}</div>
+										<input class="setting_value_input" name="{{ _key }}" placeholder="{{ _val }}">
+									</div>
+								{% endfor %}
+
+							</fieldset>
+						</div>
+
+						<!-- CONFIG -->
+						<div class="setting_type_wrapper">
+							<fieldset>
+
+								<legend>
+									config
+								</legend>
+
+								{% for config_key in Data.Config[key]["config"] %}
+									{% for _key, _value in config_key.items() %}
+										<div class="settings_content">
+											<div class="settings_content_key">{{ _key }}</div>
+											<div class="settings_content_value">{{ _value }}</div>
+											<input class="setting_value_input" name="{{ _key }}"
+											       placeholder="{{ _value }}">
+										</div>
+									{% endfor %}
+									<hr>
+								{% endfor %}
+
+							</fieldset>
+						</div>
+						<div class="btn_wrapper">
+							<div class="setting_btn btn_edit" style="width: 100%;">EDIT</div>
+							<div class="setting_btn btn_save" style="width: 45%; display: none;">SAVE</div>
+							<div class="setting_btn btn_cancel" style="width: 45%; display: none;">CANCEL</div>
+						</div>
+					</div>
+
+				</div>
+			{% endfor %}
+		</div>
 	</div>
-
-	<script>
-
-	</script>
-
 
 {% endblock body %}
