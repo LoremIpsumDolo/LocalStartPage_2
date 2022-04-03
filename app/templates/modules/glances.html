@@ -1,0 +1,36 @@
+{% set data = Data["GlancesModule"]["module_data"] %}
+
+<fieldset id="glances_fieldset" class="module_fieldset glas box_shadow">
+
+	<legend>Win PC</legend>
+
+	<table id="glances_table" class="">
+		<tr>
+			<th>Drive</th>
+			<th>Size</th>
+			<th>Used</th>
+			<th style="width: 180px;"></th>
+			<th>Free</th>
+		</tr>
+
+		{% for item in data %}
+
+			<tr>
+				<td>{{ item["device_name"] }}</td>
+				<td>{{ item["size"] }} GB</td>
+				<td>{{ item["percent"] }}%</td>
+				<td>
+					{% if item["percent"] > 80 %}
+						{% set color = "red" %}
+					{% else %}
+						{% set color = "green" %}
+					{% endif %}
+					<div class="bar bar_{{ color }}" style="width: {{ item["percent"] }}%;"></div>
+				</td>
+				<td>{{ item["free"] }} GB</td>
+			</tr>
+		{% endfor %}
+
+	</table>
+
+</fieldset>

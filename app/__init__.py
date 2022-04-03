@@ -1,7 +1,6 @@
 import logging
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
-
 from flask import Flask
 from flask_cors import CORS
 from rich.console import Console
@@ -12,14 +11,12 @@ from app.modules.module_handler import ModuleHandlerClass
 from app.utils.config import config
 from app.utils.db_handler import Database
 
-from flask.logging import default_handler
-
+# from flask.logging import default_handler
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '192b9bdd22ab9ed4d12e236c78afcb9a393ec15f71bbf5dc987d54727823bcbf'
-# app.logger.removeHandler(default_handler)
-
 cors = CORS(app)
+# app.logger.removeHandler(default_handler)
 
 AppConfig = config
 database = Database(AppConfig(section='database'))
@@ -57,6 +54,7 @@ def make_logger():
 
 	# root = logging.getLogger()
 	# root.addHandler(RichHandler(rich_tracebacks=True))
+
 
 make_logger()
 console = Console()

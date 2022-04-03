@@ -1,0 +1,47 @@
+#glances_table {
+	width           : 100%;
+	border-collapse : collapse;
+
+}
+
+#glances_table th {
+	border-bottom : solid 1px var(--text);
+	padding       : 5px;
+	text-align    : center;
+}
+
+#glances_table td {
+	padding   : 6px 2px;
+	font-size : .9em;
+}
+
+#glances_table td:nth-child(1) {
+	text-align : center;
+}
+
+#glances_table td:nth-child(2) {
+	text-align : right;
+}
+
+#glances_table td:nth-child(3) {
+	text-align : center;
+}
+
+#glances_table td:nth-child(5) {
+	text-align : right;
+}
+
+.bar {
+	height  : 15px;
+	display : block;
+}
+
+.bar_green {
+	background-color : var(--bar-green);
+	opacity          : 0.5;
+}
+
+.bar_red {
+	background-color : var(--bar-red);
+	opacity          : 0.5;
+}

@@ -9,6 +9,8 @@ logger = logging.getLogger(__name__)
 
 Spotify = ModuleHandler.Modules["SpotifyModule"]
 
+# ModuleHandler.update_CacheData("GlancesModule")
+
 
 @app.route('/')
 def url_index():

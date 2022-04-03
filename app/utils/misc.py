@@ -78,9 +78,9 @@ def request_data(url: str, request_type=None, username=None, psw=None):
 
 	try:
 		if username and psw:
-			r = session.get(url, auth=(username, psw), timeout=(1, 3))
+			r = session.get(url, auth=(username, psw), timeout=(10, 10))
 		else:
-			r = session.get(url, timeout=(1, 3))
+			r = session.get(url, timeout=(10, 10))
 
 		if request_type == "xml":
 			return BeautifulSoup(r.content, "lxml")
@@ -96,7 +96,7 @@ def request_data(url: str, request_type=None, username=None, psw=None):
 
 
 def convert_kb_to_mb(_kb: int) -> int:
-	return round(int(_kb) / 1024)
+	return round(_kb / 1024)
 
 
 def convert_mb_to_gb(_mb: int) -> float:

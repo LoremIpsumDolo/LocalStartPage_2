@@ -66,7 +66,7 @@ class ModuleHandlerClass:
 				]
 
 
-	def import_active_Modules(self) -> None:
+	def import_active_Modules(self) -> list:
 		"""
 		Import all active modules from the config file
 		"""
@@ -93,6 +93,7 @@ class ModuleHandlerClass:
 
 		imported_modules = " ".join(list(self.Modules.keys()))
 		logger.info(f"imported: {imported_modules}")
+		return list(self.Modules.keys())
 
 
 	def validate_module_name(self, module_name):

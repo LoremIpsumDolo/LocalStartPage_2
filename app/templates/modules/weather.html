@@ -1,0 +1,16 @@
+{% set data = Data["WeatherModule"]["module_data"] %}
+
+<span id="weather_img">
+                <img src='{{ data["icon"] }}' alt="">
+            </span>
+
+<h4 id="weather_today">
+	<span id="current_temp">{{ data["current"] }}</span>
+	<span class="weather_non_bold">°C</span>
+</h4>
+<p id="weather_future">
+	<span id="future_temp">{{ data["future_day"] }}</span>
+	<span class="weather_non_bold">°C | </span>
+	<span id="future_temp_min">{{ data["future_night"] }}</span>
+	<span class="weather_non_bold">°C</span>
+</p>

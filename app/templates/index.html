@@ -2,18 +2,50 @@
 
 {% block head %}
 	<script src="{{ url_for('static', filename='/js/clock.js') }}"></script>
-	<script src="{{ url_for('static', filename='/js/wttr.js') }}"></script>
 {% endblock head %}
 
 {% block body %}
-	<div id="topnav">
-		{% include 'topnav.html' %}
-	</div>
 
-	<div id="footer" class="flex">
-		{% include 'modules/network.html' %}
-	</div>
+	<header class="">
+
+		<div id="spotify_module"
+		     class="header_block"
+		     hx-get="/spotify"
+		     hx-trigger="load"
+		     hx-sync="queue all"
+		     hx-target="#spotify_module"></div>
+
+
+		<div id="clock_module" class="header_block">
+			<h4 id="clock_time"></h4>
+			<p>
+				<span id="clock_day"></span>
+				<span id="clock_date"></span>
+			</p>
+		</div>
+
+		<div id="weather_module" class="header_block">
+			{% include 'modules/weather.html' %}
+		</div>
+
+	</header>
+
+	<main>
+		<div class="main_module_container">
+
+			<div class="mod_1"></div>
+			<div class="mod_1"></div>
+
+			<div id="glances_module" class="">
+				{% include 'modules/glances.html' %}
+			</div>
+
+		</div>
+	</main>
+
+	<footer>
+
+	</footer>
+
+
 {% endblock body %}
-
-
-

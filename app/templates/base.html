@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Dashboard</title>
-
 	<link rel="shortcut icon" href="{{ url_for('static', filename='/favicon.ico') }}">
 	{# CSS  #}
 	<link rel="stylesheet" href="{{ url_for('static', filename='/css/reset.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='/css/utils.css') }}">
 	<link rel="stylesheet" href="{{ url_for('static', filename='/css/main.css') }}">
-	{#	JS  #}
+	{# MODULE CSS  #}
+	<link rel="stylesheet" href="{{ url_for('static', filename='/css/glances.css') }}">
+	{#	JS LIBS  #}
 	<script src="http://192.168.1.12/cdn/jquery.js"></script>
 	<script src="http://192.168.1.12/cdn/htmx.js"></script>
-
 	<script>
-		$SCRIPT_ROOT = {{ request.script_root|tojson }};
+      $SCRIPT_ROOT = {{ request.script_root|tojson }};
 	</script>
-
+	{#	CUSTOM JS #}
 	{% block head %}{% endblock head %}
-
 </head>
 <body>
 

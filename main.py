@@ -1,4 +1,4 @@
-from app import app, console, routes, AppConfig
+from app import app, AppConfig, routes
 
 if __name__ == '__main__':
 
