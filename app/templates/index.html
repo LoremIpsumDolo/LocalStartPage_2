@@ -2,6 +2,8 @@
 
 {% block head %}
 	<script src="{{ url_for('static', filename='/js/clock.js') }}"></script>
+	<script src="{{ url_for('static', filename='/js/weather.js') }}"></script>
+	<script src="http://192.168.1.12/cdn/stupidtable.js"></script>
 {% endblock head %}
 
 {% block body %}
@@ -14,7 +16,6 @@
 		     hx-trigger="load"
 		     hx-sync="queue all"
 		     hx-target="#spotify_module"></div>
-
 
 		<div id="clock_module" class="header_block">
 			<h4 id="clock_time"></h4>
@@ -32,20 +33,26 @@
 
 	<main>
 		<div class="main_module_container">
-
-			<div class="mod_1"></div>
 			<div class="mod_1"></div>
 
-			<div id="glances_module" class="">
-				{% include 'modules/glances.html' %}
+			<div id="right_module_container">
+
+				<div id="network_module" class="">
+					{% include 'modules/network.html' %}
+				</div>
+				<div id="glances_module" class="">
+					{% include 'modules/glances.html' %}
+				</div>
+
 			</div>
-
 		</div>
 	</main>
 
 	<footer>
-
 	</footer>
 
+	<!-- WeatherModal -->
+	<div id="WeatherModal" class="modal no_blur">
+	</div>
 
 {% endblock body %}

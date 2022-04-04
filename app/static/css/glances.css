@@ -1,35 +1,60 @@
-#glances_table {
-	width           : 100%;
-	border-collapse : collapse;
+:root {
+	--bar-green  : rgb(14, 113, 14);
+	--bar-red    : rgb(140, 27, 27);
+	--bar-yellow : rgb(176, 176, 35);
+}
 
+.module_fieldset {
+	min-width     : 200px;
+	border-radius : 16px;
+	border-color  : var(--text);
+}
+
+.module_fieldset legend {
+	color       : var(--text);
+	font-weight : bold;
+}
+
+#glances_table {
+	width           : 400px;
+	border-collapse : collapse;
 }
 
 #glances_table th {
 	border-bottom : solid 1px var(--text);
 	padding       : 5px;
 	text-align    : center;
+	cursor        : default;
 }
+
+#glances_table th:hover {
+	color : var(--text_hover);
+}
+
 
 #glances_table td {
 	padding   : 6px 2px;
 	font-size : .9em;
 }
 
+
+#glances_table td:nth-child(2),
+#glances_table td:nth-child(4),
+#glances_table td:nth-child(7) {
+	text-align : right;
+}
+
+#glances_table td:nth-child(3),
+#glances_table td:nth-child(5),
+#glances_table td:nth-child(8) {
+	text-align : left;
+}
+
+#glances_table td:nth-child(6),
 #glances_table td:nth-child(1) {
 	text-align : center;
 }
 
-#glances_table td:nth-child(2) {
-	text-align : right;
-}
-
-#glances_table td:nth-child(3) {
-	text-align : center;
-}
-
-#glances_table td:nth-child(5) {
-	text-align : right;
-}
 
 .bar {
 	height  : 15px;

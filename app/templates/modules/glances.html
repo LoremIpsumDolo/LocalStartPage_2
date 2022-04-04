@@ -5,20 +5,27 @@
 	<legend>Win PC</legend>
 
 	<table id="glances_table" class="">
+		<thead>
 		<tr>
-			<th>Drive</th>
-			<th>Size</th>
-			<th>Used</th>
+			<th data-sort="string">Drive</th>
+			<th data-sort="int">Size</th>
+			<th></th>
+			<th data-sort="int">Used</th>
+			<th></th>
 			<th style="width: 180px;"></th>
-			<th>Free</th>
+			<th data-sort="int">Free</th>
+			<th></th>
 		</tr>
-
+		</thead>
+		<tbody>
 		{% for item in data %}
 
 			<tr>
 				<td>{{ item["device_name"] }}</td>
-				<td>{{ item["size"] }} GB</td>
-				<td>{{ item["percent"] }}%</td>
+				<td>{{ item["size"] }}</td>
+				<td>GB</td>
+				<td>{{ item["percent"] }}</td>
+				<td>%</td>
 				<td>
 					{% if item["percent"] > 80 %}
 						{% set color = "red" %}
@@ -27,10 +34,18 @@
 					{% endif %}
 					<div class="bar bar_{{ color }}" style="width: {{ item["percent"] }}%;"></div>
 				</td>
-				<td>{{ item["free"] }} GB</td>
+				<td>{{ item["free"] }}</td>
+				<td>GB</td>
 			</tr>
 		{% endfor %}
 
+		</tbody>
 	</table>
+
+	<script>
+      $(function () {
+        $("table").stupidtable();
+      });
+	</script>
 
 </fieldset>

@@ -1,45 +1,32 @@
-{% set online_status = Data["NetworkModule"]["module_data"]["ONLINE_STATUS"] %}
+{% set data = Data["NetworkModule"]["module_data"] %}
 
-{% if online_status == "online" %}
-	{% set online_status_color = "green" %}
+{% if data["ONLINE_STATUS"] == "online" %}
+	{% set status_color = "green" %}
 {% else %}
-	{% set online_status_color = "red" %}
+	{% set status_color = "red" %}
 {% endif %}
-
-{# # # # # # # # # # #}
 
 {% set cache_status = Data["NetworkModule"]["module_cache_status"] %}
-
-{% if cache_status == "valid" %}
-	{% set cache_status_color = "green" %}
-{% else %}
-	{% set cache_status_color = "red" %}
-{% endif %}
-
-{# # # # # # # # # # #}
-
 {% set cache_delta = Data["NetworkModule"]["cache_delta"] %}
 
-{# # # # # # # # # # #}
+<fieldset id="network_fieldset" class="module_fieldset glas box_shadow">
 
-<div class="fs_1_2">
-	<span>Status:</span>
-	<span id="online_status"
-	      class="{{ online_status_color }}">{{ online_status }}</span>
-</div>
+	<legend>Network</legend>
+	<table id="network_table">
+		<tr>
+			<th>Status:</th>
+			<td class="{{ status_color }}">{{ data["ONLINE_STATUS"] }}</td>
 
+			<th>IP:</th>
+			<td>{{ data["IP"] }}</td>
 
-<div class="fs_1_2">
-	<span>Uptime:</span>
-	<span id="uptime">{{ Data["NetworkModule"]["module_data"]["UPTIME"] }}</span>
-</div>
+			<th>Uptime:</th>
+			{#			<td>{{ cache_status }} ({{ cache_delta }})</td>#}
+			<td>{{ data["UPTIME"] }}</td>
+		</tr>
+	</table>
 
-
-<div class="fs_1_2">
-	<span>Cache:</span>
-	<span id="footer_cache"
-	      class="{{ cache_status_color }}">{{ cache_status }} ({{ cache_delta }})</span>
-</div>
+</fieldset>
 
 {% if not cache_status == "valid" %}
 
@@ -47,7 +34,7 @@
 	      hx-get="/update_module?module_name=NetworkModule"
 	      hx-trigger="load delay:2s"
 	      hx-sync="queue all"
-	      hx-target="#footer"
+	      hx-target="#network_module"
 	></span>
 
 {% else %}
@@ -56,7 +43,7 @@
 	      hx-get="/module?module_name=NetworkModule"
 	      hx-trigger="load delay:{{ cache_delta }}s"
 	      hx-sync="queue all"
-	      hx-target="#footer"
+	      hx-target="#network_module"
 	></span>
 
 {% endif %}

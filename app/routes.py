@@ -93,6 +93,15 @@ def spotify_callback():
 
 	return redirect('/')
 
+
+# weather
+
+@app.route('/weather_widget')
+def url_weather_widget():
+	api_key = ModuleHandler.Modules["WeatherModule"].Config['apikey']
+	return render_template('modules/weather_widget.html', api_key=api_key)
+
+
 ##################
 #   SETTINGS    #
 ################

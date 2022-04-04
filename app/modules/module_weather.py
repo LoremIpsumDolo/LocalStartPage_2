@@ -25,11 +25,10 @@ class ModuleClass(ModuleTemplate):
 		ApiKey = self.Config["apikey"]
 		one_call_url = f"https://api.openweathermap.org/data/2.5/onecall?lat=52.52&lon=13.41&exclude=hourly,minutely,alerts&appid={ApiKey}&units=metric"
 
-		# if response := misc.request_json(one_call_url):
-		# 	misc.save_json("app/modules/weather.json", response)
-		# 	return response
-
-		return misc.open_json("app/modules/weather.json")
+		if response := misc.request_json(one_call_url):
+			# misc.save_json("app/modules/weather.json", response)
+			return response
+		# return misc.open_json("app/modules/weather.json")
 
 	def parse_data(self, raw_data):
 		try:

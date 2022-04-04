@@ -12,6 +12,10 @@ body {
 	font-family : "Noto Sans", sans-serif;
 }
 
+fieldset {
+	cursor: default;
+}
+
 /* HEADER */
 
 header {
@@ -24,14 +28,14 @@ header {
 
 .header_block {
 	max-height : 70px;
-	min-width  : 200px;
-	max-width  : 400px;
+	min-width  : 170px;
+	max-width  : 300px;
 	display    : inline-block;
 	padding    : 4px;
 }
 
-#spotify_image,
-#weather_img {
+#spotify_image>img,
+#weather_img>img {
 	height  : 60px;
 	width   : 60px;
 	float   : left;
@@ -68,16 +72,20 @@ header {
 	font-size : 1.6rem;
 }
 
+#weather_module:hover {
+	color: var(--text_hover);
+}
+
 /* MAIN MODULE */
 
 .main_module_container {
 	flex-grow        : 2;
-	padding          : 20px;
+	padding          : 35px;
 	background-color : var(--bg);
 	overflow         : scroll;
 	display          : flex;
 	flex-direction   : row;
-	justify-content  : space-around;
+	justify-content  : space-between;
 	align-items      : flex-start;
 	flex-wrap        : nowrap;
 	gap              : 1.2em;
@@ -87,14 +95,10 @@ header {
 	display : none;
 }
 
-.module_fieldset {
-	border-radius : 16px;
-	border-color  : var(--text);
-}
-
-.module_fieldset legend {
-	color       : var(--text);
-	font-weight : bold;
+#right_module_container {
+	display        : flex;
+	flex-direction : column;
+	gap            : 4em;
 }
 
 .mod_1 {
@@ -106,4 +110,45 @@ header {
 .mod_2 {
 	min-height : 650px;
 	min-width  : 460px;
+}
+
+/* NETWORK MODULE */
+
+#network_table {
+	width           : 400px;
+	border-collapse : collapse;
+}
+
+#network_table th {
+	padding    : 5px;
+	text-align : center;
+}
+
+#network_table td {
+	padding   : 6px 2px;
+	font-size : 1rem;
+}
+
+
+/* MODAL */
+
+
+.modal {
+	display  : none;
+	position : fixed;
+	z-index  : 1;
+	left     : 0;
+	top      : 0;
+	width    : 100%;
+	height   : 100%;
+	overflow : auto;
+
+}
+
+.modal-content {
+	margin         : 15% auto;
+	padding        : 20px;
+	display        : flex;
+	flex-direction : column;
+	align-items    : center;
 }

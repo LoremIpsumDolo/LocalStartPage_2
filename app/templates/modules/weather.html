@@ -1,4 +1,7 @@
 {% set data = Data["WeatherModule"]["module_data"] %}
+{% set cache_status = Data["WeatherModule"]["module_cache_status"] %}
+{% set cache_delta = Data["WeatherModule"]["cache_delta"] %}
+
 
 <span id="weather_img">
                 <img src='{{ data["icon"] }}' alt="">
@@ -14,3 +17,23 @@
 	<span id="future_temp_min">{{ data["future_night"] }}</span>
 	<span class="weather_non_bold">°C</span>
 </p>
+
+{% if not cache_status == "valid" %}
+
+	<span style="display: none"
+	      hx-get="/update_module?module_name=WeatherModule"
+	      hx-trigger="load delay:2s"
+	      hx-sync="queue all"
+	      hx-target="#weather_module"
+	></span>
+
+{% else %}
+
+	<span style="display: none"
+	      hx-get="/module?module_name=WeatherModule"
+	      hx-trigger="load delay:{{ cache_delta }}s"
+	      hx-sync="queue all"
+	      hx-target="#weather_module"
+	></span>
+
+{% endif %}
