@@ -1,10 +1,10 @@
-{% set data = Data["GlancesModule"]["module_data"] %}
+{% set data = Data["WindowsModule"]["module_data"] %}
 
 <fieldset id="glances_fieldset" class="module_fieldset glas box_shadow">
 
 	<legend>Win PC</legend>
 
-	<table id="glances_table" class="">
+	<table id="win_table" class="glances_table">
 		<thead>
 		<tr>
 			<th data-sort="string">Drive</th>
@@ -41,11 +41,5 @@
 
 		</tbody>
 	</table>
-
-	<script>
-      $(function () {
-        $("table").stupidtable();
-      });
-	</script>
 
 </fieldset>

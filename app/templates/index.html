@@ -32,21 +32,28 @@
 	</header>
 
 	<main>
-		<div class="main_module_container">
-			<div class="mod_1"></div>
 
-			<div id="right_module_container">
+		<div class="col flex_start">
 
-				<div id="network_module" class="">
-					{% include 'modules/network.html' %}
-				</div>
-				<div id="glances_module" class="">
-					{% include 'modules/glances.html' %}
-				</div>
-
+			<div id="glances_module" class="">
+				{% include 'modules/windows.html' %}
 			</div>
+
+		</div>
+
+		<div class="col flex_between">
+
+			<div id="raspberry_module" class="">
+				{% include 'modules/raspberry.html' %}
+			</div>
+
+			<div id="network_module" class="">
+				{% include 'modules/network.html' %}
+			</div>
+
 		</div>
 	</main>
+
 
 	<footer>
 	</footer>
@@ -55,4 +62,9 @@
 	<div id="WeatherModal" class="modal no_blur">
 	</div>
 
+	<script>
+      $(function () {
+        $("table").stupidtable();
+      });
+	</script>
 {% endblock body %}

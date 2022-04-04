@@ -144,3 +144,12 @@ def convert_timestamp(t):
 				time_delta_str = f"{int(time_delta_days)} day(s) ago"
 
 	return time_delta_str
+
+
+def seconds_to_day_time_str(sec) -> str:
+	seconds = int(sec)
+	minutes = seconds // 60
+	hours = minutes // 60
+	days = hours // 24
+	return f"{days}d {hours % 60}h {minutes % 60}m"
+	# print("%02d:%02d:%02d:%02d" % (days, hours % 24, minutes % 60, seconds % 60))
