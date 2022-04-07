@@ -1,70 +1,65 @@
 {% extends 'base.html' %}
 
 {% block head %}
+
 	<script src="{{ url_for('static', filename='/js/clock.js') }}"></script>
 	<script src="{{ url_for('static', filename='/js/weather.js') }}"></script>
-	<script src="http://192.168.1.12/cdn/stupidtable.js"></script>
+	<script src="{{ url_for('static', filename='/js/news.js') }}"></script>
 {% endblock head %}
 
 {% block body %}
 
-	<header class="">
+	<nav class="glas">
 
-		<div id="spotify_module"
-		     class="header_block"
+		<div id="SpotifyBlock"
+		     class="nav_block"
 		     hx-get="/spotify"
-		     hx-trigger="load"
+		     hx-trigger="every 2s"
 		     hx-sync="queue all"
-		     hx-target="#spotify_module"></div>
-
-		<div id="clock_module" class="header_block">
-			<h4 id="clock_time"></h4>
-			<p>
-				<span id="clock_day"></span>
-				<span id="clock_date"></span>
-			</p>
+		     hx-target="#SpotifyBlock">
 		</div>
 
-		<div id="weather_module" class="header_block">
+		<div id="DateTimeBlock" class="nav_block">
+			<h1 id="clock_time"></h1>
+			<p id="clock_day"></p>
+		</div>
+
+		<div id="WeatherBlock" class="nav_block">
 			{% include 'modules/weather.html' %}
 		</div>
 
-	</header>
+	</nav>
 
 	<main>
-
-		<div class="col flex_start">
-
-			<div id="glances_module" class="">
-				{% include 'modules/windows.html' %}
-			</div>
+		<div id="grid_2" class="main_grid">
+			<fieldset id="reddit_news_module" class="outer_news_wrapper glas box_shadow">
+				{% include 'modules/news.html' %}
+			</fieldset>
 
 		</div>
 
-		<div class="col flex_between">
+		<div id="grid_3" class="main_grid">
 
-			<div id="raspberry_module" class="">
+			<fieldset id="raspberry_module" class="glas box_shadow">
+				<legend>Raspberry Pi</legend>
 				{% include 'modules/raspberry.html' %}
-			</div>
+			</fieldset>
 
-			<div id="network_module" class="">
-				{% include 'modules/network.html' %}
-			</div>
+			<fieldset id="windows_module" class="glas box_shadow">
+				<legend>Windows</legend>
+				{% include 'modules/windows.html' %}
+			</fieldset>
 
 		</div>
 	</main>
 
-
-	<footer>
+	<footer class="glas">
+		{% include 'modules/network.html' %}
 	</footer>
 
 	<!-- WeatherModal -->
 	<div id="WeatherModal" class="modal no_blur">
 	</div>
 
-	<script>
-      $(function () {
-        $("table").stupidtable();
-      });
-	</script>
+
 {% endblock body %}

@@ -1,45 +1,64 @@
 {% set data = Data["WindowsModule"]["module_data"] %}
 
-<fieldset id="glances_fieldset" class="module_fieldset glas box_shadow">
-
-	<legend>Win PC</legend>
-
-	<table id="win_table" class="glances_table">
-		<thead>
+<table id="windows_data_table" class="data_table">
+	<thead>
+	<tr>
+		<th data-sort="string">Drive</th>
+		<th data-sort="int">Size</th>
+		<th data-sort="int">Used</th>
+		<th style="width: 180px;"></th>
+		<th data-sort="int">Free</th>
+	</tr>
+	</thead>
+	<tbody>
+	{% for item in data %}
 		<tr>
-			<th data-sort="string">Drive</th>
-			<th data-sort="int">Size</th>
-			<th></th>
-			<th data-sort="int">Used</th>
-			<th></th>
-			<th style="width: 180px;"></th>
-			<th data-sort="int">Free</th>
-			<th></th>
-		</tr>
-		</thead>
-		<tbody>
-		{% for item in data %}
+			<td>{{ item["device_name"] }}</td>
+			<td data-sort-value="{{ item["size"] }}">{{ item["size"] }}gb</td>
+			<td data-sort-value="{{ item["percent"] }}">{{ item["percent"] }}%</td>
 
-			<tr>
-				<td>{{ item["device_name"] }}</td>
-				<td>{{ item["size"] }}</td>
-				<td>GB</td>
-				<td>{{ item["percent"] }}</td>
-				<td>%</td>
-				<td>
-					{% if item["percent"] > 80 %}
-						{% set color = "red" %}
-					{% else %}
-						{% set color = "green" %}
-					{% endif %}
+			{% if item["percent"] > 80 %}
+				{% set color = "red" %}
+			{% else %}
+				{% set color = "green" %}
+			{% endif %}
+
+			<td style="padding-right: 7px;">
+				<div class="bar_td">
 					<div class="bar bar_{{ color }}" style="width: {{ item["percent"] }}%;"></div>
-				</td>
-				<td>{{ item["free"] }}</td>
-				<td>GB</td>
-			</tr>
-		{% endfor %}
+				</div>
+			</td>
+			<td data-sort-value="{{ item["free"] }}">{{ item["free"] }}gb</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
 
-		</tbody>
-	</table>
+<script>
+  $(function () {
+    $("#windows_data_table").stupidtable();
+  });
+</script>
 
-</fieldset>
+{% set cache_status = Data["WindowsModule"]["module_cache_status"] %}
+{% set cache_delta = Data["WindowsModule"]["cache_delta"] %}
+
+{% if cache_status != "valid" %}
+
+	<span style="display: none"
+	      hx-get="/update_module?module_name=WindowsModule"
+	      hx-trigger="load delay:10s"
+	      hx-sync="queue all"
+	      hx-target="#windows_module"
+	></span>
+
+{% else %}
+
+	<span style="display: none"
+	      hx-get="/module?module_name=WindowsModule"
+	      hx-trigger="load delay:{{ cache_delta }}s"
+	      hx-sync="queue all"
+	      hx-target="#windows_module"
+	></span>
+
+{% endif %}

@@ -1,6 +1,6 @@
 import json
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import requests
 from requests.exceptions import ConnectionError
@@ -121,7 +121,7 @@ def GetHumanReadable(size, precision=2):
 
 
 def convert_timestamp(t):
-	current_time = datetime.fromtimestamp(int(time.time()))
+	current_time = datetime.fromtimestamp(int(time.time())) - timedelta(hours=1)
 	post_time = datetime.fromtimestamp(int(t))
 	time_delta_seconds = (current_time - post_time).total_seconds()
 	time_delta_str = None

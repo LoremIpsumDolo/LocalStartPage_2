@@ -1,0 +1,58 @@
+{% set data = Data["RedditNewsModule"]["module_data"] %}
+
+{% set cache_status = Data["RedditNewsModule"]["module_cache_status"] %}
+{% set cache_delta = Data["RedditNewsModule"]["cache_delta"] %}
+
+
+
+	{% for source in data %}
+
+		{% if loop.index == 1 %}
+			{% set hidden_flag = "" %}
+			<legend class="legend_btn" value="{{ loop.index }}">{{ source["source_name"] }} >></legend>
+		{% else %}
+			{% set hidden_flag = "no_display" %}
+		{% endif %}
+
+
+		<div id="news_index_{{ loop.index }}" title="{{ source["source_name"] }}"
+		     class="news_wrapper {{ hidden_flag }}">
+			{% for article in source["source_data"] %}
+				<div class="news_block glas">
+					<a target="_blank" href="https://en.reddit.com/{{ article["permalink"] }}" class="news_body">
+						{{ article["title"] }}
+					</a>
+					<div class="news_footer">
+						<a target="_blank" href="{{ article["url"] }}">{{ article["domain"] }}</a>
+						<p>{{ article["created_utc"] }}</p>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	{% endfor %}
+
+
+
+{% if cache_status != "valid" %}
+
+	<span style="display: none"
+	      hx-get="/update_module?module_name=RedditNewsModule"
+	      hx-trigger="load delay:5s"
+	      hx-sync="queue all"
+	      hx-target="#reddit_news_module"
+	></span>
+
+{% else %}
+
+	<span style="display: none"
+	      hx-get="/module?module_name=RedditNewsModule"
+	      hx-trigger="load delay:{{ cache_delta }}s"
+	      hx-sync="queue all"
+	      hx-target="#reddit_news_module"
+	></span>
+
+{% endif %}
+
+
+
+

@@ -1,73 +1,98 @@
 {% set data = Data["RaspberryModule"]["module_data"][0] %}
 
-<fieldset id="raspberry_fieldset" class="module_fieldset glas box_shadow">
-
-	<legend>RaspberryPi</legend>
-
-	<div class="pi_service_wrapper">
-
-		<table class="pi_service_table">
-			<thead>
-			<tr>
-				<th>Service</th>
-				<th>Status</th>
-				<th>Uptime</th>
-			</tr>
-			</thead>
-			<tbody>
-
-			{% for item in data["services"] %}
-				<tr>
-					<td>{{ item["service_name"] }}</td>
-					<td>
-						{% if item["status"] != "monitored" %}
-							{% set color = "red" %}
-							{% set status = "✘" %}
-						{% else %}
-							{% set color = "green" %}
-							{% set status = "✔" %}
-						{% endif %}
-						<div class="{{ color }}" style="text-align: center">{{ status }}</div>
-					</td>
-					<td style="text-align: right">{{ item["uptime"] }}</td>
-				</tr>
-			{% endfor %}
-
-			</tbody>
-		</table>
-	</div>
-
-	<table id="pi_table" class="glances_table">
-		<thead>
+<table id="pi_service_table" class="data_table">
+	<thead>
+	<tr>
+		<th>Service</th>
+		<th>Status</th>
+		<th>Uptime</th>
+	</tr>
+	</thead>
+	<tbody>
+	{% for item in data["services"] %}
 		<tr>
-			<th data-sort="string">Drive</th>
-			<th colspan="2" data-sort="int">Size</th>
-			<th colspan="2" data-sort="int">Used</th>
-			<th style="width: 180px;"></th>
-			<th colspan="2" data-sort="int">Free</th>
-		</tr>
-		</thead>
-		<tbody>
-		{% for item in data["storage"] %}
-			<tr>
-				<td>{{ item["name"] }}</td>
-				<td>{{ item["total"] }}</td>
-				<td>GB</td>
-				<td>{{ item["percent"] }}</td>
-				<td>%</td>
-				{% if item["percent"] > 80 %}
-					{% set color = "red" %}
-				{% else %}
-					{% set color = "green" %}
-				{% endif %}
-				<td>
-					<div class="bar bar_{{ color }}" style="width: {{ item["percent"] }}%;"></div>
-				</td>
-				<td>{{ item["free"] }}</td>
-				<td>GB</td>
-			</tr>
-		{% endfor %}
-		</tbody>
-	</table>
+			<td style="text-align: left">{{ item["service_name"] }}</td>
 
-</fieldset>
+			{% if item["status"] != "monitored" %}
+				{% set color = "red" %}
+				{% set status = "✘" %}
+			{% else %}
+				{% set color = "green" %}
+				{% set status = "✔" %}
+			{% endif %}
+
+			<td>
+				<div class="{{ color }}" style="text-align: center">{{ status }}</div>
+			</td>
+
+			<td>{{ item["uptime"] }}</td>
+		</tr>
+	{% endfor %}
+
+	</tbody>
+</table>
+
+
+<table id="pi_data_table" class="data_table">
+	<thead>
+	<tr>
+		<th data-sort="string">Drive</th>
+		<th data-sort="int">Size</th>
+		<th data-sort="int">Used</th>
+		<th style="width: 180px;"></th>
+		<th data-sort="int">Free</th>
+	</tr>
+	</thead>
+	<tbody>
+	{% for item in data["storage"] %}
+		<tr>
+			<td>{{ item["name"] }}</td>
+			<td data-sort-value="{{ item["total"] }}">{{ item["total"] }}gb</td>
+			<td data-sort-value="{{ item["percent"] }}">{{ item["percent"] }}%</td>
+
+			{% if item["percent"] > 80 %}
+				{% set color = "red" %}
+			{% else %}
+				{% set color = "green" %}
+			{% endif %}
+
+			<td style="padding-right: 7px;">
+				<div class="bar_td">
+					<div class="bar bar_{{ color }}" style="width: {{ item["percent"] }}%;"></div>
+				</div>
+			</td>
+			<td data-sort-value="{{ item["free"] }}">{{ item["free"] }}gb</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+
+<script>
+  $(function () {
+    $("#pi_data_table").stupidtable();
+  });
+</script>
+
+
+{% set cache_status = Data["RaspberryModule"]["module_cache_status"] %}
+{% set cache_delta = Data["RaspberryModule"]["cache_delta"] %}
+
+{% if cache_status != "valid" %}
+
+	<span style="display: none"
+	      hx-get="/update_module?module_name=RaspberryModule"
+	      hx-trigger="load delay:5s"
+	      hx-sync="queue all"
+	      hx-target="#raspberry_module"
+	></span>
+
+{% else %}
+
+	<span style="display: none"
+	      hx-get="/module?module_name=RaspberryModule"
+	      hx-trigger="load delay:{{ cache_delta }}s"
+	      hx-sync="queue all"
+	      hx-target="#raspberry_module"
+	></span>
+
+{% endif %}

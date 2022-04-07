@@ -24,6 +24,7 @@ def make_module_response(_module_name: str, do_update=False):
 		return "module not found", 500
 
 	if do_update:
+		logger.info(f"updating {_module_name}")
 		ModuleHandler.update_CacheData(_module_name)
 
 	template_name = ModuleHandler.Modules[_module_name].Settings["template_name"]

@@ -1,0 +1,243 @@
+/* NAV */
+
+.nav_block {
+	/*min-width  : 100px;*/
+	width      : 280px;
+	min-height : 50px;
+}
+
+nav h1 {
+	font-size : 2rem;
+}
+
+nav h2 {
+	font-size : 1.2rem;
+}
+
+nav img {
+	height : 64px;
+	width  : 64px;
+}
+
+#DateTimeBlock {
+	text-align : center;
+}
+
+#SpotifyBlock,
+#WeatherBlock {
+	display         : flex;
+	align-items     : center;
+	justify-content : flex-start;
+	/*animation-name     : fade_in;*/
+	/*animation-duration : 1s;*/
+}
+
+
+#SpotifyDetails,
+#WeatherDetails {
+	padding : 0 8px;
+}
+
+#SpotifyDetails,
+p {
+	overflow      : hidden;
+	text-overflow : ellipsis;
+	white-space   : nowrap;
+	cursor        : default;
+}
+
+/* ##################################################### */
+
+
+/* MAIN */
+
+fieldset {
+	margin        : 1em;
+	border-radius : 4px;
+	cursor        : default;
+	width         : max-content;
+	border-color  : var(--text);
+}
+
+legend {
+	font-weight : 600;
+	font-size   : 1.1rem;
+	color       : #bbb9b9;
+}
+
+/* TABLE */
+
+table {
+	margin          : 5px 10px;
+	border-collapse : collapse;
+	width           : max-content;
+}
+
+th {
+	border-bottom : solid 1px var(--text);
+	padding       : 5px;
+	text-align    : center;
+	cursor        : default;
+}
+
+td {
+	padding    : 6px 2px;
+	font-size  : .9em;
+	text-align : right;
+}
+
+table td:first-child {
+	text-align : center;
+}
+
+.bar_td {
+	border : 1px solid var(--bg-light);
+}
+
+.bar {
+	height     : 15px;
+	display    : block;
+	transition : ease .5s;
+}
+
+.bar_green {
+	background-color : var(--bar-green);
+	opacity          : 0.5;
+}
+
+.bar_red {
+	background-color : var(--bar-red);
+	opacity          : 0.5;
+}
+
+tr:hover .bar {
+	transition : ease .5s;
+	opacity    : 1;
+}
+
+th:hover {
+	color : var(--text_hover);
+}
+
+
+/* FOOTER */
+
+footer {
+	display         : flex;
+	flex-direction  : row;
+	align-items     : center;
+	justify-content : center;
+}
+
+#network_block {
+	display         : flex;
+	flex-direction  : row;
+	justify-content : space-between;
+	gap             : 2em;
+}
+
+/* MODAL */
+
+
+.modal {
+	display  : none;
+	position : fixed;
+	z-index  : 10;
+	left     : 0;
+	top      : 0;
+	width    : 100%;
+	height   : 100%;
+	overflow : auto;
+}
+
+.modal-content {
+	margin         : 15% auto;
+	padding        : 20px;
+	display        : flex;
+	flex-direction : column;
+	align-items    : center;
+}
+
+.widget-left-menu__logo_bnw {
+	display : none;
+}
+
+/* NEWS */
+
+.outer_news_wrapper {
+	height          : 95%;
+	display         : flex;
+	flex-direction  : column;
+	justify-content : flex-start;
+	align-items     : center;
+}
+
+.news_wrapper {
+	height        : 100%;
+	margin-top    : 2%;
+	margin-bottom : 2%;
+	overflow-x    : hidden;
+	overflow-y    : scroll;
+	padding-right : 2%;
+}
+
+.news_wrapper::-webkit-scrollbar {
+	width : 15px;
+}
+
+.news_wrapper::-webkit-scrollbar-track {
+	background              : rgba(36, 39, 42, 0.61);
+	backdrop-filter         : blur(7.5px);
+	-webkit-backdrop-filter : blur(7.5px);
+}
+
+.news_wrapper::-webkit-scrollbar-thumb {
+	background : #888;
+}
+
+.news_block {
+	max-width       : 450px;
+	min-width       : 450px;
+	overflow        : hidden;
+	margin-bottom   : 1rem;
+	display         : flex;
+	flex-direction  : column;
+	justify-content : space-between;
+	border-radius   : 8px;
+
+}
+
+.news_body {
+	max-height      : 100px;
+	padding         : .5em;
+	font-size       : 1.2rem;
+	font-weight     : 600;
+	overflow        : hidden;
+	word-wrap       : break-word;
+	cursor          : pointer;
+	text-decoration : none;
+	color           : var(--text);
+}
+
+.news_footer {
+	display         : flex;
+	justify-content : space-between;
+}
+
+.news_footer > * {
+	font-size       : .9rem;
+	color           : var(--text);
+	text-decoration : none;
+	padding         : 4px 1.5rem;
+}
+
+.news_footer a:hover,
+.news_body:hover,
+.legend_btn:hover {
+	color  : var(--text_hover);
+	cursor : pointer;
+}
+
+.no_display {
+	display : none;
+}

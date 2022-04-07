@@ -160,7 +160,7 @@ class ModuleHandlerClass:
 		:return: The status of the cache and the time remaining before it expires.
 		"""
 
-		current_time = datetime.datetime.now()
+		current_time = datetime.datetime.now() - datetime.timedelta(hours=1)
 		time_delta = (current_time - last_update_timestamp).total_seconds() // 60
 		status = "expired" if time_delta >= module_cache_time else "valid"
 

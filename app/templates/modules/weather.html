@@ -3,20 +3,16 @@
 {% set cache_delta = Data["WeatherModule"]["cache_delta"] %}
 
 
-<span id="weather_img">
-                <img src='{{ data["icon"] }}' alt="">
-            </span>
+<div id="WeatherBlock" class="nav_block">
 
-<h4 id="weather_today">
-	<span id="current_temp">{{ data["current"] }}</span>
-	<span class="weather_non_bold">°C</span>
-</h4>
-<p id="weather_future">
-	<span id="future_temp">{{ data["future_day"] }}</span>
-	<span class="weather_non_bold">°C | </span>
-	<span id="future_temp_min">{{ data["future_night"] }}</span>
-	<span class="weather_non_bold">°C</span>
-</p>
+	<img id="WeatherIcon" src='{{ data["icon"] }}' alt="">
+	<div id="WeatherDetails">
+		<h2>{{ data["current"] }}°C</h2>
+		<p>{{ data["future_day"] }}°C |{{ data["future_night"] }}°C</p>
+	</div>
+
+</div>
+
 
 {% if not cache_status == "valid" %}
 
@@ -24,7 +20,7 @@
 	      hx-get="/update_module?module_name=WeatherModule"
 	      hx-trigger="load delay:2s"
 	      hx-sync="queue all"
-	      hx-target="#weather_module"
+	      hx-target="#WeatherBlock"
 	></span>
 
 {% else %}
@@ -33,7 +29,7 @@
 	      hx-get="/module?module_name=WeatherModule"
 	      hx-trigger="load delay:{{ cache_delta }}s"
 	      hx-sync="queue all"
-	      hx-target="#weather_module"
+	      hx-target="#WeatherBlock"
 	></span>
 
 {% endif %}

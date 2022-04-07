@@ -1,15 +1,13 @@
 {% if data.is_playing == True %}
 
-<span id="spotify_image">
-                <img src="{{ data.images }}" alt="">
-            </span>
-<h4 id="spotify_artist">{{ data.artist }}</h4>
-<p id="spotify_track">{{ data.track }}</p>
+<div id="SpotifyBlock" class="nav_block">
+
+    <img id="SpotifyImage" src="{{ data.images }}" alt="">
+    <div id="SpotifyDetails">
+        <h2>{{ data.artist }}</h2>
+        <p>{{ data.track }}</p>
+    </div>
+
+</div>
 
 {% endif %}
-
-<span style="display: none"
-      hx-get="/spotify"
-      hx-trigger="load delay:2s"
-      hx-sync="queue all"
-      hx-target="#spotify_module"></span>

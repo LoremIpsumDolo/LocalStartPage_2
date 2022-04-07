@@ -8,14 +8,13 @@
 	<link rel="shortcut icon" href="{{ url_for('static', filename='/favicon.ico') }}">
 	{# CSS  #}
 	<link rel="stylesheet" href="{{ url_for('static', filename='/css/reset.css') }}">
-	<link rel="stylesheet" href="{{ url_for('static', filename='/css/utils.css') }}">
-	<link rel="stylesheet" href="{{ url_for('static', filename='/css/main.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='/css/base.css') }}">
 	{# MODULE CSS  #}
-	<link rel="stylesheet" href="{{ url_for('static', filename='/css/glances.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='/css/components.css') }}">
 	{#	JS LIBS  #}
 	<script src="http://192.168.1.12/cdn/jquery.js"></script>
 	<script src="http://192.168.1.12/cdn/htmx.js"></script>
-
+	<script src="http://192.168.1.12/cdn/stupidtable.js"></script>
 	<script>
       $SCRIPT_ROOT = {{ request.script_root|tojson }};
 	</script>

@@ -24,7 +24,7 @@ $(document).ready(function () {
       minute: '2-digit'
     });
     document.getElementById("clock_day").innerHTML = days[today.getDay()];
-    document.getElementById("clock_date").innerHTML = day + "/" + month;
+    // document.getElementById("clock_date").innerHTML = day + "/" + month;
   }
 
 });
