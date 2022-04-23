@@ -1,3 +1,6 @@
+![](https://github.com/LoremIpsumDolo/LocalStartPage_2/blob/master/doku/final.JPG)
+
+
 # How the Local Startpage works
 
 ### What is used:
